@@ -105,5 +105,7 @@
       }
     }
   },
-  "defaultProject": "api_primeNG"
+  "cli": {
+    "analytics": "49ef698b-ffcb-4bfa-ae4d-9d4e9fec824b"
+  }
 }

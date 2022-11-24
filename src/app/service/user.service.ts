@@ -1,31 +1,33 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable , throwError} from "rxjs";
 
-@Injectable({
-providedIn: "root"
-})
+import { catchError, retry } from 'rxjs/operators';
+
+@Injectable()
+
 export class UsersService {
+
 
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any>{
-    return this.http.get('https://localhost:3000/api/usuarios');
+    return this.http.get('/api/usuarios');
   }
 
   getUser(id: any): Observable<any>{
-    return this.http.get(`https://localhost:3000/api/usuarios/:id`, id)
+    return this.http.get('/api/usuarios/:id', id)
   }
 
   createUser(user: any): Observable<any>{
-    return this.http.post('https://localhost:3000/api/usuarios', user);
+    return this.http.post('/api/usuarios', user);
   }
 
   editUser(id: any): Observable<any>{
-    return this.http.put('https://localhost:3000/api/usuarios/:id', id);
+    return this.http.put('/api/usuarios/:id', id);
   }
 
   deleteUser(id: any): Observable<any>{
-    return this.http.delete(`https://localhost:3000/api/usuarios/:id`, id)
+    return this.http.delete('/api/usuarios/:id', id)
   }
 }
